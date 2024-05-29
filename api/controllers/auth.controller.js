@@ -3,7 +3,6 @@ import User from "../models/user.model.js"; // Model User
 import bcryptjs from "bcryptjs"; // Thư viện để mã hóa mật khẩu
 import { errorHandler } from "../../utils/error.js"; // Hàm xử lý lỗi
 import jwt from "jsonwebtoken"; // Thư viện để tạo và xác thực JSON Web Tokens
-import dotenv from "dotenv"; // Thư viện để tải biến môi trường từ file .env
 
 // Hàm đăng ký người dùng
 export const signup = async (req, res, next) => {
@@ -15,7 +14,7 @@ export const signup = async (req, res, next) => {
     await newUser.save(); // Lưu người dùng mới vào database
     res.status(201).json("User created successfully!"); // Trả về thông báo thành công
   } catch (error) {
-    next(errorHandler(550, "Error from the function")); // Nếu có lỗi, gọi hàm xử lý lỗi
+    next(errorHandler(550, "Username or email already taken")); // Nếu có lỗi, gọi hàm xử lý lỗi
   }
 };
 
