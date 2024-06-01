@@ -24,7 +24,7 @@ const userSlice = createSlice({
             state.error = null; // Xóa lỗi
         },
         // Reducer thất bại khi đăng nhập
-        signInFail: (state, action) => {
+        signInFailure: (state, action) => {
             state.loading = false; // Đặt trạng thái tải thành false
             state.error = action.payload; // Cập nhật lỗi với payload từ action
         },
@@ -32,6 +32,6 @@ const userSlice = createSlice({
 })
 
 // Xuất các action từ userSlice
-export const { signInStart, signInSuccess, signInFail } = userSlice.actions;
+export const { signInStart, signInSuccess, signInFailure } = userSlice.actions;
 
 export default userSlice.reducer;
